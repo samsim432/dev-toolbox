@@ -3,18 +3,18 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-// Framer Motion variants for smooth loading
-const containerVariants = {
+// Framer Motion variants for smooth loading - NOW WITH STRICT TYPES
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.05 } // Sped up the stagger slightly for mobile feels
+    transition: { staggerChildren: 0.05 }
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 15 },
   show: { 
     opacity: 1, 
@@ -51,7 +51,6 @@ export default function HomePage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        // Adjusted paddings and alignments for mobile vs desktop
         className="flex flex-col items-center text-center space-y-4 md:space-y-6 pt-6 pb-6 md:pt-12 md:pb-10 border-b px-2"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -70,7 +69,6 @@ export default function HomePage() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        // Tighter gap on mobile (gap-4), wider on desktop (md:gap-6)
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-12"
       >
         {tools.map((tool) => {
@@ -85,7 +83,6 @@ export default function HomePage() {
                   {/* Subtle top border accent */}
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r transition-opacity opacity-0 group-hover:opacity-100 ${colorStyles.split(' ')[0].replace('text-', 'from-').concat(' to-transparent')}`} />
 
-                  {/* Adjusted padding for mobile touch targets */}
                   <CardHeader className="p-5 md:p-6">
                     <div className="flex items-center gap-3 mb-2 md:mb-3">
                       <div className={`p-2.5 rounded-xl transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3 shadow-sm ${colorStyles}`}>

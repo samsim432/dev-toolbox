@@ -123,10 +123,13 @@ export function Navbar() {
 
         {/* Right side Actions */}
         <div className="flex items-center shrink-0">
-          <Button variant="outline" size="sm" asChild className="hidden sm:flex rounded-full transition-all hover:border-primary hover:text-primary">
-            <a href="https://github.com" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="hidden sm:flex rounded-full transition-all hover:border-primary hover:text-primary"
+            onClick={() => window.open("https://github.com", "_blank", "noreferrer")}
+          >
+            GitHub
           </Button>
         </div>
       </div>

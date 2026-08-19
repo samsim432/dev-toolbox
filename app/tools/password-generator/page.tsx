@@ -66,7 +66,6 @@ export default function PasswordGenerator() {
 
     for (let i = 0; i < length; i++) {
       // Map the random number to an index in our charset pool
-      // We use modulo (%) to keep the number within the bounds of our charset length
       const randomIndex = randomValues[i] % charset.length;
       newPassword += charset[randomIndex];
     }
@@ -127,7 +126,7 @@ export default function PasswordGenerator() {
             </div>
             <Slider
               value={[length]}
-              onValueChange={(vals) => setLength(vals[0])}
+              onValueChange={(vals) => setLength(Array.isArray(vals) ? vals[0] : vals)}
               min={8}
               max={128}
               step={1}
